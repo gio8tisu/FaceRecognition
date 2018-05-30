@@ -1,4 +1,4 @@
-# EDCAV 2018 example code
+# EDCAV 2018 Face Recognition
 
 Python code examples for EDCAV's face recognition's lab
 
