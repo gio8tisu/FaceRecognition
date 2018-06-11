@@ -16,9 +16,9 @@ data/train/Jane Doe/{image1.jpg, ..., imageN.jpg}
 
 ```
 training_images --> feature_extraction --> model_construction
-                                                |                                                                
-                                                |                                                                
-                                                v                                                                
+                                                |
+                                                |
+                                                v
 test_images     --> feature_extraction --> classifier --> hypothesis
 ```
 
@@ -34,7 +34,7 @@ python create_all_models.py data/train models/n100
 ```
 ### Performing face recognition
 ```
-python test_all.py data/test models/n100 
+python test_all.py data/test models/n100
 ```
 Output:
 
