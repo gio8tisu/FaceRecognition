@@ -1,3 +1,5 @@
+# Sublime Text
+*.sublime-*
 #Models folders
 models*/
 

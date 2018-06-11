@@ -4,50 +4,48 @@ import os
 
 
 class Model():
-    # Constructor 
-    def __init__(self, id = -1, name = '', model_name = ''):
-
+    def __init__(self, id=-1, name='', model_name=''):
+        """ Constructor."""
         if model_name != '':
             with h5py.File(model_name, 'r') as hf:
-                self.__id__   = np.int64(hf.get('id'))
+                self.__id__ = np.int64(hf.get('id'))
                 dset = hf.get('name')
                 self.__name__ = dset.attrs['name']
-                self.__data__  = np.array(hf.get('vects'))
+                self.__data__ = np.array(hf.get('vects'))
         else:
-            self.__id__   = id
+            self.__id__ = id
             self.__data__ = []
             self.__name__ = name
-        
-    # Guarda el modelo en un fichero dentro del directorio especificado
+
     def save(self, model_name):
-        
+        """ Save model in file."""
         hf = h5py.File(model_name, 'w')
         hf.create_dataset('vects', data=self.__data__)
-        hf.create_dataset('id'   , data=self.__id__)
-        
-        dt = h5py.special_dtype(vlen=bytes)   # http://docs.h5py.org/en/latest/strings.html
+        hf.create_dataset('id', data=self.__id__)
+
+        dt = h5py.special_dtype(vlen=bytes)
         dset = hf.create_dataset("name", (100,), dtype=dt)
         dset.attrs["name"] = self.__name__
         hf.close()
 
-        
-    # Añade un vector de características al modelo (en el vector _data).
     def add(self, vec):
+        """ Add feature vector to model."""
         self.__data__.append(vec)
-        
-    # Devuelve el tamaño del vector (el número de caras en el modelo)
+
     def size(self):
+        """ Returns vector size, i.e. numer of faces."""
         return len(self.__data__)
-    
-    # Acceso al vector de características de una cara determinada
+
     def __call__(self, num_vec):
+        """ Access to feature vector of a face."""
         return self.__data__[num_vec]
-    
-    # Método que retorna el identificador numérico
+
     def id(self):
+        """ Return model ID."""
         return self.__id__
 
     def name(self):
+        """ Return model name"""
         return self.__name__
 
 
@@ -60,6 +58,6 @@ def load_models(models_dir):
             extension = os.path.splitext(fname)[1]
             if extension == '.bin':
                 print ('Reading model {}/{}'.format(dirName, fname))
-                models.append(Model(model_name = '{}/{}'.format(dirName, fname)))
+                models.append(Model(model_name='{}/{}'.format(dirName, fname)))
 
     return models
