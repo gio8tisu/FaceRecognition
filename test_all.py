@@ -13,13 +13,11 @@ Options:
   --rule=<r>          knn                                       [default: knn]
 """
 
-from docopt import docopt
-
 import os
+
+from docopt import docopt
 import imageio
-# Advanced functionality: compute confusion matrix
 from sklearn.metrics import confusion_matrix
-# Advanced functionality: provide classification report
 from sklearn.metrics import classification_report
 
 import model

@@ -1,7 +1,9 @@
 # Sublime Text
 *.sublime-*
-#Models folders
-models*/
+
+# Folders
+models/
+results/
 
 *.pdf
 

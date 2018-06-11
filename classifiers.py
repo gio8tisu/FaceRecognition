@@ -18,7 +18,6 @@ def knn(vect, models, k=1, ord=2):
         m = np.asarray(distances)
         best_m = m[0:k, 1]  # k nearest models
         try:
-            print(m[0:k, :])
             hypotesis = mode(best_m.tolist())  # mode i.e most common value
         except StatisticsError:  # there is a tie
             hypotesis = best_m[0]  # nearest

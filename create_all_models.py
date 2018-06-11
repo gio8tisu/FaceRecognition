@@ -11,9 +11,9 @@ Options:
   --feat=<f>              hist, dct, pca                       [default: hist]
 """
 
-from docopt import docopt
 import os
 
+from docopt import docopt
 import imageio
 import model
 
