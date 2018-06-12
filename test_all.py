@@ -24,7 +24,8 @@ import model
 import features
 import classifiers
 
-if __name__ == '__main__':
+
+def main():
     # read arguments
     args = docopt(__doc__)
 
@@ -114,3 +115,7 @@ if __name__ == '__main__':
     # Advanced reporting:
     print (confusion_matrix(y_true, y_pred))
     print (classification_report(y_true, y_pred, digits=3))
+
+
+if __name__ == '__main__':
+    main()

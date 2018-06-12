@@ -19,7 +19,8 @@ import model
 
 import features
 
-if __name__ == '__main__':
+
+def main():
     # read arguments
     args = docopt(__doc__)
 
@@ -79,3 +80,7 @@ if __name__ == '__main__':
     for name in model_dict:
         model_name = '{}/{}_model.bin'.format(output_dir, name)
         model_dict[name].save(model_name)
+
+
+if __name__ == '__main__':
+    main()
